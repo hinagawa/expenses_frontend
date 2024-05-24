@@ -1,10 +1,8 @@
-import './App.css';
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
 
-function App() {
-  return (
-    <di>
-    </di>
-  );
-}
-
-export default App;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
