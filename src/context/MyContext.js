@@ -8,7 +8,7 @@ const MyProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/user/users/1')
+    fetch('http://localhost:8000/api/user/user/1')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch data');
@@ -16,7 +16,7 @@ const MyProvider = ({ children }) => {
         return response.json();
       })
       .then(data => {
-        setState({ ...state, userData: data.user[0] });
+        setState({ ...state, userData: data.user });
       })
       .catch(error => {
         console.error('Error fetching data:', error);

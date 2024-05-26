@@ -46,18 +46,18 @@ const dataArray = [
 
 function Sidebar() {
     const { state } = useContext(MyContext);
-    console.log(state, 'asdsa')
+
     return (
-        <div className="flex flex-col bg-white shadow-lg h-screen">
+        <div className="flex flex-col bg-white shadow-lg">
             <div className="flex flex-row justify-around gap-2 m-5">
                 <img className="rounded-full w-12 h-12" src={avatar} alt="User"></img>
                 <div className="flex flex-col">
-                    <p className="font-bold">{state.name}</p>
-                    <p className="text-xs">{state.mail}</p>
+                    <p className="font-bold">{state.userData?.name}</p>
+                    <p className="text-xs">{state.userData?.email}</p>
                 </div>
             </div>
-            <nav className="h-full mb-24">
-                <ul className="list-none flex flex-col h-screen">
+            <nav className="h-screen">
+                <ul className="list-none flex flex-col">
                     {
                         dataArray.map((data) =>
                             <li key={data.id} className="hover:bg-gray-200 h-20 flex flex-row items-center gap-1 pl-4">

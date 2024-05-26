@@ -13,8 +13,9 @@ function Dashboard() {
     useEffect(() => {
         fetch("http://localhost:8000/api/finances/finance/1")
             .then(response => response.json())
-            .then(data => setData(data.finances))
+            .then(data => setData(data?.finances))
             .catch(error => console.error(error));
+        console.log(data)
     }, [])
 
     useEffect(() => {
@@ -33,6 +34,7 @@ function Dashboard() {
 
         setExpenses(totalExpenses);
         setIncomes(totalIncomes);
+
     }, [data]);
 
     const getBalance = () => {
@@ -41,7 +43,7 @@ function Dashboard() {
     }
 
     return (
-        <div className="flex flex-row bg-gray-100">
+        <div className="flex flex-row bg-gray-100 h-screen">
             <Sidebar />
             <div className="flex flex-col">
                 <div className="flex flex-row">
