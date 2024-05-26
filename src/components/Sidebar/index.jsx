@@ -1,3 +1,7 @@
+import { useContext } from "react";
+
+import { MyContext } from "../../context/MyContext"
+
 import SpaceDashboardRoundedIcon from "@mui/icons-material/SpaceDashboardRounded";
 import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded"
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
@@ -10,46 +14,53 @@ const dataArray = [
     {
         icon: <SpaceDashboardRoundedIcon />,
         text: "Dashboard",
-        url: "/"
+        url: "/",
+        id: 1
     },
     {
         icon: <ReceiptLongRoundedIcon />,
         text: "History",
-        url: "/history"
+        url: "/history",
+        id: 2
     },
     {
         icon: <AssessmentRoundedIcon />,
         text: "Statistic",
-        url: "/statistic"
+        url: "/statistic",
+        id: 3
     },
     {
         icon: <SavingsRoundedIcon />,
         text: "Target",
-        url: "/target"
+        url: "/target",
+        id: 4
     },
     {
         icon: <AccountCircleRoundedIcon />,
         text: "Profile",
-        url: "/profile"
+        url: "/profile",
+        id: 5
     }
 ];
 
 
 function Sidebar() {
+    const { state } = useContext(MyContext);
+    console.log(state, 'asdsa')
     return (
         <div className="flex flex-col bg-white shadow-lg h-screen">
             <div className="flex flex-row justify-around gap-2 m-5">
                 <img className="rounded-full w-12 h-12" src={avatar} alt="User"></img>
                 <div className="flex flex-col">
-                    <p className="font-bold">Polina</p>
-                    <p className="text-xs">test@gmail.com</p>
+                    <p className="font-bold">{state.name}</p>
+                    <p className="text-xs">{state.mail}</p>
                 </div>
             </div>
             <nav className="h-full mb-24">
                 <ul className="list-none flex flex-col h-screen">
                     {
                         dataArray.map((data) =>
-                            <li className="hover:bg-gray-200 h-20 flex flex-row items-center gap-1 pl-4">
+                            <li key={data.id} className="hover:bg-gray-200 h-20 flex flex-row items-center gap-1 pl-4">
                                 {data.icon}
                                 <a href={data.url}>{data.text}</a>
                             </li>

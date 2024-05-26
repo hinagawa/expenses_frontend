@@ -6,6 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import { MyProvider } from './context/MyContext';
+
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import History from "./pages/History";
@@ -39,7 +41,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MyProvider>
+      <RouterProvider router={router} />
+    </MyProvider>
   </React.StrictMode>
 );
 
