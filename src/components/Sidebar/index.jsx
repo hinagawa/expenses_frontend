@@ -56,7 +56,7 @@ function Sidebar() {
                     <p className="text-xs">{state.userData?.email}</p>
                 </div>
             </div>
-            <nav className="h-screen">
+            <nav>
                 <ul className="list-none flex flex-col">
                     {
                         dataArray.map((data) =>
