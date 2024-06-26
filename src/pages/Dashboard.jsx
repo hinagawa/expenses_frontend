@@ -11,7 +11,7 @@ function Dashboard() {
     const [incomes, setIncomes] = useState()
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/finances/finance/1")
+        fetch("http://localhost:8000/api/finances/finances/1")
             .then(response => response.json())
             .then(data => setData(data?.finances))
             .catch(error => console.error(error));
@@ -47,8 +47,8 @@ function Dashboard() {
             <Sidebar />
             <div className="flex flex-col">
                 <div className="flex flex-row">
-                    <Card title="Income" sum={incomes} />
-                    <Card title="Expense" sum={expenses} />
+                    <Card title="Income" sum={incomes} isExpenses={false} />
+                    <Card title="Expense" sum={expenses} isExpenses={true} />
                     <Card title="Balance" sum={getBalance()} isBalance={true} />
                     <CurrentTarget />
                 </div>

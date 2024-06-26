@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react"
+
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import Sidebar from "../components/Sidebar"
 import Table from "../components/Table"
 
@@ -7,10 +10,11 @@ const columns = [
   { field: "name", headerName: "Name", width: 150 },
   {
     field: "category",
+    width: 150,
     headerName: "Category",
   },
   {
-    field: "date_added",
+    field: "created_at",
     headerName: "Date",
     width: 150,
     editable: true,
@@ -20,7 +24,17 @@ const columns = [
     headerName: "Amount",
     width: 150,
     editable: true,
-  }
+  },
+  {
+    field: 'actions',
+    headerName: 'Actions',
+    width: 150,
+    renderCell: (params) => (
+      <button variant="contained" color="secondary" onClick={() => { console.log(this.id) }}>
+        <DeleteIcon />
+      </button>
+    ),
+  },
 ];
 
 function History() {
@@ -32,9 +46,8 @@ function History() {
 
   useEffect(() => {
     console.log('useEffect');
-    fetch('http://localhost:8000/api/finances/finance/1')
+    fetch('http://localhost:8000/api/finances/finances/1')
       .then(response => {
-        console.log(response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -46,16 +59,14 @@ function History() {
           ...item,
           category: item.category.category,
         }));
-        console.log(flattenedExpenses, 'asd')
+
         const incomes = data?.finances?.filter(item => item.is_expenses === false);
         const flattenedIncomes = incomes?.map((item) => ({
           ...item,
           category: item.category.category,
         }));
-        console.log(expenses, incomes)
         setExpenses(flattenedExpenses);
         setIncomes(flattenedIncomes)
-        console.log(data.finances)
         setLoading(false);
       })
       .catch(error => {
@@ -63,7 +74,7 @@ function History() {
         setError(error);
         setLoading(false);
       });
-  }, []); // Empty dependency array to run only once on component mount
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -72,6 +83,22 @@ function History() {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/finances/finances/${id}/`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        console.log('Item deleted successfully');
+      } else {
+        console.error('Error deleting item');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <div className="flex flex-row bg-gray-100">

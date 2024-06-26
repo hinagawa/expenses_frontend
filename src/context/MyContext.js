@@ -8,7 +8,7 @@ const MyProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/user/user/1')
+    fetch('http://localhost:8000/api/user/users/1')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch data');

@@ -14,7 +14,6 @@ function Table({columns, rows}) {
           },
         }}
         pageSizeOptions={[5]}
-        checkboxSelection
         disableRowSelectionOnClick/>
     )
 }

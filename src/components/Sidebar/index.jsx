@@ -4,9 +4,9 @@ import { MyContext } from "../../context/MyContext"
 
 import SpaceDashboardRoundedIcon from "@mui/icons-material/SpaceDashboardRounded";
 import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded"
-import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
+// import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
 import SavingsRoundedIcon from "@mui/icons-material/SavingsRounded";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+// import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 import avatar from "../../assets/img/avatar.png"
 
@@ -23,24 +23,24 @@ const dataArray = [
         url: "/history",
         id: 2
     },
-    {
-        icon: <AssessmentRoundedIcon />,
-        text: "Statistic",
-        url: "/statistic",
-        id: 3
-    },
+    // {
+    //     icon: <AssessmentRoundedIcon />,
+    //     text: "Statistic",
+    //     url: "/statistic",
+    //     id: 3
+    // },
     {
         icon: <SavingsRoundedIcon />,
         text: "Target",
         url: "/target",
-        id: 4
+        id: 3
     },
-    {
-        icon: <AccountCircleRoundedIcon />,
-        text: "Profile",
-        url: "/profile",
-        id: 5
-    }
+    // {
+    //     icon: <AccountCircleRoundedIcon />,
+    //     text: "Profile",
+    //     url: "/profile",
+    //     id: 5
+    // }
 ];
 
 
